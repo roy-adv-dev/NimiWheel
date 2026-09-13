@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גלגל השאלות והסרטונים - משחק אינטראקטיבי</title>
+  
+  <!-- גופני Google Fonts בעברית -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- אייקוניםBootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- גיליון עיצוב ראשי -->
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body class="dark-theme">
+  <div id="app" class="app-container">
+    
+    <!-- סרגל עליון ראשי -->
+    <header class="app-header">
+      <div class="header-right">
+        <div class="brand">
+          <div class="brand-icon"><i class="bi-pie-chart-fill"></i></div>
+          <div class="brand-text">
+            <h1>גלגל השאלות</h1>
+            <span class="brand-tag">סרטונים וחידונים</span>
+          </div>
+        </div>
+
+        <!-- בחירת סט משחק אקטיבי -->
+        <div class="game-select-wrapper">
+          <label for="game-set-select" class="sr-only">בחר משחק</label>
+          <select id="game-set-select" class="custom-select" title="בחר ערכת משחק">
+            <!-- נטען דינמית -->
+          </select>
+        </div>
+      </div>
+
+      <div class="header-left">
+        <!-- כפתור איפוס גלגל מהיר -->
+        <button id="btn-reset-wheel" class="btn btn-outline" title="החזר את כל השאלות שהוסרו לגלגל">
+          <i class="bi-arrow-counterclockwise"></i>
+          <span>אפס גלגל</span>
+        </button>
+
+        <!-- כפתור הגדרות שמע -->
+        <button id="btn-toggle-sound" class="btn btn-icon" title="הפעל / נטרל שמע">
+          <i class="bi-volume-up-fill" id="sound-icon"></i>
+        </button>
+
+        <!-- זמן סיבוב -->
+        <div class="spin-time-control" title="זמן סיבוב בשניות">
+          <i class="bi-stopwatch"></i>
+          <input type="range" id="spin-time-range" min="3" max="15" value="6" step="1">
+          <span id="spin-time-val">6s</span>
+        </div>
+
+        <!-- כפתור מסך מלא -->
+        <button id="btn-fullscreen" class="btn btn-icon" title="מסך מלא">
+          <i class="bi-arrows-fullscreen"></i>
+        </button>
+
+        <!-- כפתור ניהול משחק (Admin) -->
+        <button id="btn-open-admin" class="btn btn-primary">
+          <i class="bi-gear-fill"></i>
+          <span>ניהול שאלות</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- תוכן מרכזי - אזור המשחק -->
+    <main class="game-main">
+      <div class="wheel-stage">
+        
+        <!-- אינדיקטור סטטיסטיקה -->
+        <div class="wheel-stats-bar">
+          <span class="badge" id="questions-count-badge">נשארו 0 שאלות</span>
+          <span class="game-title-display" id="active-game-title">טוען...</span>
+        </div>
+
+        <!-- אזור הקנבס והגלגל -->
+        <div class="wheel-canvas-container" id="wheel-container">
+          <canvas id="wheel-canvas"></canvas>
+        </div>
+
+        <!-- כפתור סיבוב ראשי -->
+        <div class="spin-action-area">
+          <button id="btn-spin-main" class="btn-spin-glow">
+            <span class="spin-btn-text">סובב את הגלגל!</span>
+            <i class="bi-play-fill"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- מודאל זכייה - הצגת השאלה + סרטון YouTube -->
+    <div id="victory-modal" class="modal-backdrop hidden">
+      <div class="modal-card victory-card animate-pop">
+        
+        <div class="victory-header">
+          <div class="victory-badge"><i class="bi-trophy-fill"></i> השאלה שעלתה!</div>
+          <button class="btn-close-modal" id="btn-close-victory" title="סגור"><i class="bi-x-lg"></i></button>
+        </div>
+
+        <div class="victory-body">
+          <!-- טקסט השאלה בגדול -->
+          <h2 id="victory-question-text" class="victory-question">
+            ...
+          </h2>
+
+          <!-- מיכל סרטון YouTube (מופיע רק אם מוגדר) -->
+          <div id="youtube-player-container" class="youtube-modal-container">
+            <!-- נגן מוטמע דינמית -->
+          </div>
+        </div>
+
+        <!-- סרגל פעולות מודאל -->
+        <div class="victory-footer">
+          <button id="btn-remove-and-next" class="btn btn-success btn-lg btn-block">
+            <i class="bi-check-circle-fill"></i>
+            <span>המשך לסיבוב הבא (הסר שאלה זו מגלגל)</span>
+          </button>
+          
+          <button id="btn-keep-in-wheel" class="btn btn-ghost">
+            <span>השאר שאלה בגלגל</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- מודאל ניהול שאלות ומשחקים (Admin Modal) -->
+    <div id="admin-modal" class="modal-backdrop hidden">
+      <div class="modal-card admin-card animate-fade">
+        
+        <div class="admin-header">
+          <h2><i class="bi-sliders"></i> ניהול משחקים ושאלות</h2>
+          <button class="btn-close-modal" id="btn-close-admin" title="סגור"><i class="bi-x-lg"></i></button>
+        </div>
+
+        <div class="admin-body">
+          
+          <!-- ניהול סטים -->
+          <section class="admin-section game-sets-panel">
+            <h3>ערכות משחק שמורות</h3>
+            <div class="game-sets-actions">
+              <button id="btn-new-game-set" class="btn btn-sm btn-primary"><i class="bi-plus-lg"></i> משחק חדש</button>
+              <button id="btn-duplicate-set" class="btn btn-sm btn-outline"><i class="bi-copy"></i> שכפל משחק</button>
+              <button id="btn-export-json" class="btn btn-sm btn-ghost"><i class="bi-download"></i> יצוא JSON</button>
+              <label for="import-json-file" class="btn btn-sm btn-ghost cursor-pointer">
+                <i class="bi-upload"></i> יבוא JSON
+                <input type="file" id="import-json-file" accept=".json" class="sr-only">
+              </label>
+              <button id="btn-delete-game-set" class="btn btn-sm btn-danger"><i class="bi-trash"></i> מחק משחק</button>
+            </div>
+            
+            <div class="game-set-meta-form">
+              <div class="form-group">
+                <label for="input-set-title">שם המשחק הנוכחי:</label>
+                <input type="text" id="input-set-title" class="form-input" placeholder="שם המשחק">
+              </div>
+              <div class="form-group">
+                <label for="input-set-desc">תיאור קצר:</label>
+                <input type="text" id="input-set-desc" class="form-input" placeholder="תיאור המשחק">
+              </div>
+              <div class="form-group">
+                <label for="admin-spin-duration">זמן סיבוב הגלגל (בשניות):</label>
+                <input type="number" id="admin-spin-duration" class="form-input" min="3" max="20" value="6">
+              </div>
+            </div>
+          </section>
+
+          <hr class="divider">
+
+          <!-- הוספת שאלה חדשה -->
+          <section class="admin-section add-item-panel">
+            <h3>הוספת שאלה חדשה לגלגל</h3>
+            <form id="form-add-question" class="add-question-grid">
+              <div class="form-group full-width">
+                <label for="input-question-text">תוכן השאלה / המשימה *</label>
+                <textarea id="input-question-text" class="form-input" rows="2" placeholder="הקלד כאן את השאלה המלאה..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="input-youtube-url">קישור YouTube (אופציונלי):</label>
+                <input type="url" id="input-youtube-url" class="form-input" placeholder="https://www.youtube.com/watch?v=...">
+              </div>
+
+              <div class="form-group color-pick-group">
+                <label for="input-item-color">צבע גזרה:</label>
+                <input type="color" id="input-item-color" class="color-picker" value="#3b82f6">
+              </div>
+
+              <div class="form-group flex-end">
+                <button type="submit" class="btn btn-success"><i class="bi-plus-circle-fill"></i> הוסף שאלה</button>
+              </div>
+            </form>
+          </section>
+
+          <hr class="divider">
+
+          <!-- טבלת שאלות אקטיביות -->
+          <section class="admin-section items-list-panel">
+            <div class="section-title-bar">
+              <h3>שאלות במשחק זה (<span id="admin-items-count">0</span>)</h3>
+              <button id="btn-toggle-bulk-import" class="btn btn-sm btn-link">הוספה מהירה בבלוק טקסט</button>
+            </div>
+
+            <!-- אזור יבוא מהיר מוסתר -->
+            <div id="bulk-import-container" class="bulk-import-box hidden">
+              <label for="textarea-bulk-text">הכנס שאלות (כל שאלה בשורה חדשה):</label>
+              <textarea id="textarea-bulk-text" class="form-input" rows="4" placeholder="שאלה ראשונה&#10;שאלה שנייה&#10;שאלה שלישית"></textarea>
+              <button id="btn-submit-bulk" class="btn btn-sm btn-primary mt-2">הוסף את כל השאלות</button>
+            </div>
+
+            <!-- רשימת השאלות -->
+            <div id="questions-admin-list" class="questions-list">
+              <!-- נטען דינמית -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- מודאל עריכת שאלה קיימת -->
+    <div id="edit-question-modal" class="modal-backdrop hidden">
+      <div class="modal-card animate-pop" style="max-width: 520px;">
+        <div class="admin-header">
+          <h2><i class="bi-pencil-square"></i> עריכת שאלה</h2>
+          <button class="btn-close-modal" id="btn-close-edit-question" title="סגור"><i class="bi-x-lg"></i></button>
+        </div>
+        <form id="form-edit-question" class="admin-body">
+          <input type="hidden" id="edit-question-id">
+          <div class="form-group">
+            <label for="edit-question-text">תוכן השאלה / המשימה *</label>
+            <textarea id="edit-question-text" class="form-input" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="edit-youtube-url">קישור YouTube (להוספה, מחיקה או עדכון סרטון):</label>
+            <input type="url" id="edit-youtube-url" class="form-input" placeholder="https://www.youtube.com/watch?v=...">
+          </div>
+          <div class="form-group color-pick-group">
+            <label for="edit-item-color">צבע גזרה:</label>
+            <input type="color" id="edit-item-color" class="color-picker" value="#3b82f6">
+          </div>
+          <div class="victory-footer" style="padding: 12px 0 0; background: transparent; border: none;">
+            <button type="submit" class="btn btn-success btn-block"><i class="bi-check-lg"></i> שמור שינויים בשאלה</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ייבוא לוגיקה ראשית -->
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
