@@ -94,7 +94,8 @@ class App {
     });
   }
 
-  loadState() {
+  async loadState() {
+    await StorageManager.loadInitialGameSetsAsync();
     this.renderGameSelectOptions();
     this.loadActiveGameSet();
   }

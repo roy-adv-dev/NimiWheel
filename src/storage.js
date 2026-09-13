@@ -7,11 +7,31 @@ const STORAGE_KEY_ACTIVE_ID = 'wheel_active_game_id_v1';
 const STORAGE_KEY_REMOVED_PREFIX = 'wheel_removed_items_v1_';
 
 export class StorageManager {
+  static async loadInitialGameSetsAsync() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY_GAMES);
+      if (raw) {
+        return JSON.parse(raw);
+      }
+      // טעינה מקובץ game-sets.json המרכזי של ה-Repository במידה וקיים
+      const res = await fetch('./game-sets.json');
+      if (res.ok) {
+        const remoteGames = await res.json();
+        const gamesList = Array.isArray(remoteGames) ? remoteGames : (remoteGames.gameSets || PRESET_GAME_SETS);
+        this.saveGameSets(gamesList);
+        return gamesList;
+      }
+    } catch (e) {
+      console.log('Using default preset game sets:', e);
+    }
+    this.saveGameSets(PRESET_GAME_SETS);
+    return PRESET_GAME_SETS;
+  }
+
   static getGameSets() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY_GAMES);
       if (!raw) {
-        // ראשוני: שמירת התבניות ב-LocalStorage
         this.saveGameSets(PRESET_GAME_SETS);
         return [...PRESET_GAME_SETS];
       }
@@ -116,20 +136,16 @@ export class StorageManager {
     localStorage.removeItem(STORAGE_KEY_REMOVED_PREFIX + gameId);
   }
 
-  // --- יבוא ויצוא בפורמט JSON ---
+  // --- יבוא ויצוא בפורמט JSON עבור ה-Repository ---
 
   static exportGameSetsJSON() {
-    const data = {
-      version: 1,
-      exportedAt: new Date().toISOString(),
-      gameSets: this.getGameSets()
-    };
-    const jsonStr = JSON.stringify(data, null, 2);
+    const gameSets = this.getGameSets();
+    const jsonStr = JSON.stringify(gameSets, null, 2);
     const blob = new Blob([jsonStr], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `wheel-games-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `game-sets.json`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -137,10 +153,11 @@ export class StorageManager {
   static importGameSetsJSON(jsonString) {
     try {
       const parsed = JSON.parse(jsonString);
-      if (parsed.gameSets && Array.isArray(parsed.gameSets)) {
-        this.saveGameSets(parsed.gameSets);
-        if (parsed.gameSets[0]?.id) {
-          this.setActiveGameId(parsed.gameSets[0].id);
+      const list = Array.isArray(parsed) ? parsed : parsed.gameSets;
+      if (Array.isArray(list) && list.length > 0) {
+        this.saveGameSets(list);
+        if (list[0]?.id) {
+          this.setActiveGameId(list[0].id);
         }
         return true;
       }
