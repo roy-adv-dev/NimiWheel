@@ -708,6 +708,40 @@ body {
   gap: 4px;
 }
 
+/* מיכל תמונת סטילס במודאל */
+
+.victory-image-container {
+  width: 100%;
+  max-height: 360px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--bg-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.victory-image {
+  max-width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.item-image-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .item-actions {
   display: flex;
   gap: 6px;

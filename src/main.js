@@ -42,6 +42,7 @@ class App {
     this.btnCloseVictory = document.getElementById('btn-close-victory');
     this.victoryQuestionText = document.getElementById('victory-question-text');
     this.youtubePlayerContainer = document.getElementById('youtube-player-container');
+    this.imagePlayerContainer = document.getElementById('image-player-container');
     this.btnRemoveAndNext = document.getElementById('btn-remove-and-next');
     this.btnKeepInWheel = document.getElementById('btn-keep-in-wheel');
 
@@ -61,6 +62,7 @@ class App {
     this.formAddQuestion = document.getElementById('form-add-question');
     this.inputQuestionText = document.getElementById('input-question-text');
     this.inputYoutubeUrl = document.getElementById('input-youtube-url');
+    this.inputImageUrl = document.getElementById('input-image-url');
     this.inputItemColor = document.getElementById('input-item-color');
 
     // רשימת שאלות בניהול
@@ -78,6 +80,7 @@ class App {
     this.editQuestionId = document.getElementById('edit-question-id');
     this.editQuestionText = document.getElementById('edit-question-text');
     this.editYoutubeUrl = document.getElementById('edit-youtube-url');
+    this.editImageUrl = document.getElementById('edit-image-url');
     this.editItemColor = document.getElementById('edit-item-color');
   }
 
@@ -175,7 +178,7 @@ class App {
       this.updateSpinDuration(parseInt(e.target.value, 10));
     });
 
-    // זמן סיבוב בממשק הניהול (דרישה #1)
+    // זמן סיבוב בממשק הניהול
     this.adminSpinDuration.addEventListener('input', (e) => {
       const val = parseInt(e.target.value, 10) || 6;
       this.updateSpinDuration(val);
@@ -260,7 +263,7 @@ class App {
     });
     this.btnSubmitBulk.addEventListener('click', () => this.handleBulkAdd());
 
-    // מודאל עריכת שאלה קיימת (דרישה #2)
+    // מודאל עריכת שאלה קיימת
     this.btnCloseEditQuestion.addEventListener('click', () => this.showEditQuestionModal(false));
     this.formEditQuestion.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -304,6 +307,22 @@ class App {
     this.wheel.spin();
   }
 
+  /**
+   * המרה אוטומטית של קישורי Google Drive מורכבים לקישור תמונה ישיר (Direct Image Stream)
+   */
+  normalizeImageUrl(url) {
+    if (!url || typeof url !== 'string') return '';
+    const trimmed = url.trim();
+    if (!trimmed) return '';
+
+    // זיהוי קישורי Google Drive
+    const driveMatch = trimmed.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    if (driveMatch && driveMatch[1]) {
+      return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
+    }
+    return trimmed;
+  }
+
   handleSpinWinner(winningItem) {
     if (!winningItem) return;
     this.currentWinnerItem = winningItem;
@@ -311,7 +330,7 @@ class App {
     // הצגת השאלה במודאל בגדול
     this.victoryQuestionText.textContent = winningItem.text;
 
-    // ניתוח והטמעת נגן YouTube במידה וקיים קישור
+    // 1. טיפול בסרטון YouTube
     if (winningItem.youtubeUrl && winningItem.youtubeUrl.trim() !== '') {
       const embedHTML = YouTubeHelper.renderEmbedContainer(winningItem.youtubeUrl);
       if (embedHTML) {
@@ -324,6 +343,16 @@ class App {
     } else {
       this.youtubePlayerContainer.innerHTML = '';
       this.youtubePlayerContainer.style.display = 'none';
+    }
+
+    // 2. טיפול בתמונת סטילס
+    if (winningItem.imageUrl && winningItem.imageUrl.trim() !== '') {
+      const directImageUrl = this.normalizeImageUrl(winningItem.imageUrl);
+      this.imagePlayerContainer.innerHTML = `<img src="${directImageUrl}" class="victory-image" alt="תמונת שאלה" onerror="this.style.display='none';" />`;
+      this.imagePlayerContainer.style.display = 'flex';
+    } else {
+      this.imagePlayerContainer.innerHTML = '';
+      this.imagePlayerContainer.style.display = 'none';
     }
 
     // הפעלת חגיגת קונפטי
@@ -339,6 +368,8 @@ class App {
     } else {
       this.victoryModal.classList.add('hidden');
       this.youtubePlayerContainer.innerHTML = '';
+      this.imagePlayerContainer.innerHTML = '';
+      this.imagePlayerContainer.style.display = 'none';
     }
   }
 
@@ -383,6 +414,7 @@ class App {
       text: text,
       color: this.inputItemColor.value,
       youtubeUrl: this.inputYoutubeUrl.value.trim(),
+      imageUrl: this.inputImageUrl.value.trim(),
       active: true
     };
 
@@ -393,6 +425,7 @@ class App {
     // איפוס שדות
     this.inputQuestionText.value = '';
     this.inputYoutubeUrl.value = '';
+    this.inputImageUrl.value = '';
 
     this.loadActiveGameSet();
   }
@@ -413,6 +446,7 @@ class App {
         text: lineText,
         color: colors[idx % colors.length],
         youtubeUrl: '',
+        imageUrl: '',
         active: true
       });
     });
@@ -435,6 +469,7 @@ class App {
 
     this.questionsAdminList.innerHTML = items.map((item, index) => {
       const hasYoutube = item.youtubeUrl && item.youtubeUrl.trim() !== '';
+      const hasImage = item.imageUrl && item.imageUrl.trim() !== '';
       return `
         <div class="question-item-row">
           <div class="item-color-dot" style="background: ${item.color || '#3b82f6'};"></div>
@@ -442,6 +477,7 @@ class App {
             <strong>#${index + 1}</strong> ${this.escapeHTML(item.text)}
           </div>
           ${hasYoutube ? '<span class="item-youtube-badge"><i class="bi-youtube"></i> וידאו</span>' : ''}
+          ${hasImage ? '<span class="item-image-badge"><i class="bi-image"></i> תמונה</span>' : ''}
           <div class="item-actions">
             <button class="btn btn-sm btn-outline btn-edit-item" data-id="${item.id}" title="ערוך שאלה">
               <i class="bi-pencil-fill"></i> ערוך
@@ -478,6 +514,7 @@ class App {
     this.editQuestionId.value = item.id;
     this.editQuestionText.value = item.text || '';
     this.editYoutubeUrl.value = item.youtubeUrl || '';
+    this.editImageUrl.value = item.imageUrl || '';
     this.editItemColor.value = item.color || '#3b82f6';
 
     this.showEditQuestionModal(true);
@@ -491,6 +528,7 @@ class App {
 
     item.text = this.editQuestionText.value.trim();
     item.youtubeUrl = this.editYoutubeUrl.value.trim();
+    item.imageUrl = this.editImageUrl.value.trim();
     item.color = this.editItemColor.value;
 
     StorageManager.saveGameSet(this.activeGameSet);

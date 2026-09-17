@@ -115,6 +115,11 @@
           <div id="youtube-player-container" class="youtube-modal-container">
             <!-- נגן מוטמע דינמית -->
           </div>
+
+          <!-- מיכל תמונת סטילס (מופיע רק אם מוגדרת תמונה) -->
+          <div id="image-player-container" class="victory-image-container" style="display: none;">
+            <!-- תמונה מוטמעת דינמית -->
+          </div>
         </div>
 
         <!-- סרגל פעולות מודאל -->
@@ -184,8 +189,13 @@
               </div>
 
               <div class="form-group">
-                <label for="input-youtube-url">קישור YouTube (אופציונלי):</label>
+                <label for="input-youtube-url">קישור YouTube (סרטון):</label>
                 <input type="url" id="input-youtube-url" class="form-input" placeholder="https://www.youtube.com/watch?v=...">
+              </div>
+
+              <div class="form-group">
+                <label for="input-image-url">קישור לתמונת סטילס (Google Drive / ImgBB):</label>
+                <input type="url" id="input-image-url" class="form-input" placeholder="https://i.ibb.co/... או Google Drive">
               </div>
 
               <div class="form-group color-pick-group">
@@ -238,8 +248,12 @@
             <textarea id="edit-question-text" class="form-input" rows="3" required></textarea>
           </div>
           <div class="form-group">
-            <label for="edit-youtube-url">קישור YouTube (להוספה, מחיקה או עדכון סרטון):</label>
+            <label for="edit-youtube-url">קישור YouTube (סרטון):</label>
             <input type="url" id="edit-youtube-url" class="form-input" placeholder="https://www.youtube.com/watch?v=...">
+          </div>
+          <div class="form-group">
+            <label for="edit-image-url">קישור לתמונת סטילס (Google Drive / ImgBB):</label>
+            <input type="url" id="edit-image-url" class="form-input" placeholder="https://i.ibb.co/... או Google Drive">
           </div>
           <div class="form-group color-pick-group">
             <label for="edit-item-color">צבע גזרה:</label>
@@ -255,6 +269,6 @@
   </div>
 
   <!-- ייבוא לוגיקה ראשית -->
-  <script type="module" src="src/main.js"></script>
+  <script src="src/app.js"></script>
 </body>
 </html>
