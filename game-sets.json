@@ -168,10 +168,11 @@
       },
       {
         "id": "item-1789316667276-23",
-        "text": "מה מספר השחקן של נימי השנה ?",
+        "text": "מה סיומת מספר הטלפון של נמרוד?",
         "color": "#3b82f6",
         "youtubeUrl": "",
-        "active": true
+        "active": true,
+        "imageUrl": ""
       },
       {
         "id": "item-1789316667276-24",
@@ -220,7 +221,8 @@
         "text": "אם נימי לא היה שחקן כדורגל הוא כנראה היה ______",
         "color": "#3b82f6",
         "youtubeUrl": "https://youtu.be/epayWs8D3Ho",
-        "active": true
+        "active": true,
+        "imageUrl": ""
       },
       {
         "id": "item-1789316667276-31",
@@ -240,8 +242,9 @@
         "id": "item-1789316667276-33",
         "text": "עם מי נימי מדבר בקול מתוק ?",
         "color": "#ef4444",
-        "youtubeUrl": "https://youtube.com/shorts/O9p3CfBcotc",
-        "active": true
+        "youtubeUrl": "",
+        "active": true,
+        "imageUrl": "https://ibb.co/RkTrNbMB"
       },
       {
         "id": "item-1789316667276-34",
@@ -317,8 +320,9 @@
         "id": "item-1789316667276-44",
         "text": "מה המקום הכי מוזר שנפלה בו לנימי שן ?",
         "color": "#3b82f6",
-        "youtubeUrl": "https://youtube.com/shorts/7YGZmH6iaco",
-        "active": true
+        "youtubeUrl": "",
+        "active": true,
+        "imageUrl": "https://ibb.co/1tS4Nqqd"
       },
       {
         "id": "item-1789316667276-45",
