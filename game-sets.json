@@ -10,6 +10,7 @@
         "text": "מה תאריך הלידה העברי של נימי ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -17,6 +18,7 @@
         "text": "מה תאריך הלידה הלועזי של נימי ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -24,6 +26,7 @@
         "text": "מאיזה גיל נימי משחק כדורגל ?",
         "color": "#3b82f6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -31,6 +34,7 @@
         "text": "באיזה גיל נימי שיחק כדורסל ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -38,6 +42,7 @@
         "text": "איך קוראים למאמן האישי של נימי ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -45,6 +50,7 @@
         "text": "בבית, סיכוי גדול שאתקל ב_______",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -52,6 +58,7 @@
         "text": "מה נימי תמיד חייב ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -59,6 +66,7 @@
         "text": "מה המאכל האהוב על נימי ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -66,6 +74,7 @@
         "text": "איזה סטייל יש לנימי ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -73,6 +82,7 @@
         "text": "מי ספק החולצות של נימי ?",
         "color": "#3b82f6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -80,6 +90,7 @@
         "text": "לאן הכי מסוכן לקחת את נימי ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -87,6 +98,7 @@
         "text": "מה השיר האהוב על נימי ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -94,6 +106,7 @@
         "text": "מה הצבע האהוב על נימי ?",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -101,6 +114,7 @@
         "text": "איפה נימי נולד ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -108,6 +122,7 @@
         "text": "באיזה גיל נימי עבר לתל מונד ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -115,6 +130,7 @@
         "text": "מי האחות האהובה על נימי ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -122,6 +138,7 @@
         "text": "מה המילה האהובה על נימי ?",
         "color": "#3b82f6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -129,6 +146,7 @@
         "text": "מה התכונה הכי בולטת של נימי ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -136,6 +154,7 @@
         "text": "החדר של נימי תמיד_________",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -143,6 +162,7 @@
         "text": "לאן נימי הכי רוצה לטוס ?",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -150,6 +170,7 @@
         "text": "איפה נימי יראה משחק עם אמא ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -157,6 +178,7 @@
         "text": "מה חוק הכדורגל שנימי הסביר לליאת הכי הרבה פעמים ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -164,6 +186,7 @@
         "text": "איזה תפקיד נימי שיחק בשנה שעברה ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -171,14 +194,15 @@
         "text": "מה סיומת מספר הטלפון של נמרוד?",
         "color": "#3b82f6",
         "youtubeUrl": "",
-        "active": true,
-        "imageUrl": ""
+        "imageUrl": "",
+        "active": true
       },
       {
         "id": "item-1789316667276-24",
         "text": "באיזו קבוצה נימי משחק ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -186,6 +210,7 @@
         "text": "איך נימי מדבר בטלפון עם חבר שאנחנו אוספים לאימון ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -193,6 +218,7 @@
         "text": "מה נימי כן ולא ?",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -200,6 +226,7 @@
         "text": "מה קרה ביום כיפור בשנת 2013 ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -207,6 +234,7 @@
         "text": "מה נימי לא אוהב ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -214,6 +242,7 @@
         "text": "איפה אפשר למצוא את נימי בתל מונד, אם הוא לא בבית/בי\"ס /חבר ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -221,14 +250,15 @@
         "text": "אם נימי לא היה שחקן כדורגל הוא כנראה היה ______",
         "color": "#3b82f6",
         "youtubeUrl": "https://youtu.be/epayWs8D3Ho",
-        "active": true,
-        "imageUrl": ""
+        "imageUrl": "",
+        "active": true
       },
       {
         "id": "item-1789316667276-31",
         "text": "מה נימי משחק בטלפון בלי לדעת לשחק ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -236,6 +266,7 @@
         "text": "מי המורה האהוב.ה על נימי ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -243,14 +274,15 @@
         "text": "עם מי נימי מדבר בקול מתוק ?",
         "color": "#ef4444",
         "youtubeUrl": "",
-        "active": true,
-        "imageUrl": "https://ibb.co/RkTrNbMB"
+        "imageUrl": "https://ibb.co/RkTrNbMB",
+        "active": true
       },
       {
         "id": "item-1789316667276-34",
         "text": "מה הקבוצה האהובה על נימי ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -258,6 +290,7 @@
         "text": "מה הערוץ האהוב עליו בטלוויזיה ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -265,6 +298,7 @@
         "text": "איך קראו לגן הראשון של נימי ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -272,6 +306,7 @@
         "text": "איזה טלפון יש לנימי ?",
         "color": "#3b82f6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -279,6 +314,7 @@
         "text": "מי השותף הקבוע שלו לסדרות ?",
         "color": "#10b981",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -286,6 +322,7 @@
         "text": "בכמה מקומות בארץ נימי התגורר ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -293,6 +330,7 @@
         "text": "עם מי נימי עושה \"עסקים\" ?",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -300,6 +338,7 @@
         "text": "איזה ניתוח נימי עבר ?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -307,6 +346,7 @@
         "text": "מה רצה לאכול כשהתעורר מהרדמה ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -314,6 +354,7 @@
         "text": "עם מי נימי מכין נקניק ?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -321,14 +362,15 @@
         "text": "מה המקום הכי מוזר שנפלה בו לנימי שן ?",
         "color": "#3b82f6",
         "youtubeUrl": "",
-        "active": true,
-        "imageUrl": "https://ibb.co/1tS4Nqqd"
+        "imageUrl": "https://ibb.co/1tS4Nqqd",
+        "active": true
       },
       {
         "id": "item-1789316667276-45",
         "text": "למי נימי היה מתחזה כשהיה קטן ?",
         "color": "#10b981",
         "youtubeUrl": "https://youtube.com/shorts/kZulokQY1NM",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -336,6 +378,7 @@
         "text": "מה זה ראשי תיבות ש\"קל ?",
         "color": "#f59e0b",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -343,6 +386,7 @@
         "text": "השחקנים הכי מוצלחים בלב השרון הם מ________",
         "color": "#ef4444",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -350,6 +394,7 @@
         "text": "כשנימי מבקש את \"הקבוע\" הוא מתכוון ל_________",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -357,6 +402,7 @@
         "text": "מה משחק הלוח האהוב על נימי ?",
         "color": "#ec4899",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       }
     ]
@@ -372,6 +418,7 @@
         "text": "מה היה היעד האחרון שטיילת בו, ומה הכי אהבת שם?",
         "color": "#06b6d4",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -379,6 +426,7 @@
         "text": "אם היית יכול לאכול רק מאכל אחד למשך שנה, מה היית בוחר?",
         "color": "#84cc16",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -386,6 +434,7 @@
         "text": "צפה בסרטון המצחיק הזה וספר על הפדיחה הכי מצחיקה שקרתה לך!",
         "color": "#f97316",
         "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -393,6 +442,7 @@
         "text": "מהו הכישרון הסודי או התחביב שלמעטים ידוע עליו?",
         "color": "#a855f7",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -400,6 +450,7 @@
         "text": "אם היית זוכה במיליון דולר מחר, מה הדבר הראשון שהיית קונה?",
         "color": "#eab308",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -407,6 +458,7 @@
         "text": "איזה סרט או סדרה אתה יכול לראות שוב ושוב בלי להימאס?",
         "color": "#6366f1",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       }
     ]
@@ -422,6 +474,7 @@
         "text": "מהו החומר הקשה ביותר בטבע?",
         "color": "#14b8a6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -429,6 +482,7 @@
         "text": "צפה בקטע מהסרטון: באיזו שנה שודר הטריילר הזה לראשונה?",
         "color": "#d946ef",
         "youtubeUrl": "https://www.youtube.com/watch?v=YoHD9XEInc0",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -436,6 +490,7 @@
         "text": "כמה יבשות יש בכדור הארץ ואיזו היחידה שאינה מיושבת בדרך קבע?",
         "color": "#3b82f6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -443,6 +498,7 @@
         "text": "משימה: עשה חיקוי של דמות מפורסמת או זמר ב-15 שניות!",
         "color": "#f43f5e",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       },
       {
@@ -450,6 +506,7 @@
         "text": "מהו האיטי ביותר מבין חמשת החושים של האדם להתפתח בריבוי תחושות?",
         "color": "#8b5cf6",
         "youtubeUrl": "",
+        "imageUrl": "",
         "active": true
       }
     ]
